@@ -1,126 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Emalyn VA Portfolio</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VA Portfolio</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      color: #222;
-    }
+<style>
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
 
-    header {
-      position: sticky;
-      top: 0;
-      background: white;
-      display: flex;
-      justify-content: space-between;
-      padding: 20px 40px;
-      border-bottom: 1px solid #eee;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background: #0f0f0f;
+  color: white;
+  overflow-x: hidden;
+}
 
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #222;
-      font-weight: 500;
-    }
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
 
-    nav a:hover {
-      color: gray;
-    }
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 12px;
+  font-size: 14px;
+  position: relative;
+}
 
-    .hero {
-      padding: 80px 40px;
-      text-align: center;
-    }
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: #00ffcc;
+  transition: 0.3s;
+}
 
-    .hero h1 {
-      font-size: 40px;
-    }
+.navbar a:hover::after {
+  width: 100%;
+}
 
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: black;
-      color: white;
-      text-decoration: none;
-      border-radius: 25px;
-    }
+.logo {
+  font-weight: bold;
+  color: #00ffcc;
+}
 
-    section {
-      padding: 60px 40px;
-      text-align: center;
-    }
+.cta {
+  background: #00ffcc;
+  color: black;
+  padding: 10px 16px;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: 0.3s;
+}
 
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
+.cta:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #00ffcc;
+}
 
-    .card {
-      border: 1px solid #eee;
-      padding: 20px;
-      border-radius: 15px;
-    }
+/* ===== HERO ===== */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 0 20px;
+  background: radial-gradient(circle at top, #1a1a1a, #0f0f0f);
+}
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      border-top: 1px solid #eee;
-      color: gray;
-    }
-  </style>
+.hero h1 {
+  font-size: 48px;
+  animation: fadeUp 1s ease;
+}
+
+.hero p {
+  margin-top: 15px;
+  color: #bbb;
+  animation: fadeUp 1.5s ease;
+}
+
+.hero .btn {
+  margin-top: 25px;
+  padding: 12px 25px;
+  background: #00ffcc;
+  color: black;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  animation: fadeUp 2s ease;
+}
+
+.hero .btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #00ffcc;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 100px 40px;
+}
+
+/* ===== CARDS ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 15px;
+  transition: 0.4s;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px rgba(0,255,204,0.2);
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== CONTACT ===== */
+.contact {
+  text-align: center;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+  border-top: 1px solid #222;
+}
+</style>
 </head>
 
 <body>
 
-<header>
-  <div><b>Emalyn VA</b></div>
-  <nav>
+<!-- NAV -->
+<div class="navbar">
+  <div class="logo">Emalyn VA</div>
+
+  <div>
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
     <a href="#contact">Contact</a>
-  </nav>
-</header>
+  </div>
 
+  <a class="cta" href="#contact">Hire Me</a>
+</div>
+
+<!-- HERO -->
 <section class="hero" id="home">
-  <h1>Virtual Assistant for Your Business Growth</h1>
-  <p>Customer Support • Social Media • Lead Generation</p>
-  <a class="btn" href="#contact">Hire Me</a>
+  <h1>Virtual Assistant That Helps You Grow</h1>
+  <p>Customer Support • Social Media • Lead Generation • Admin Tasks</p>
+  <a class="btn" href="#portfolio">View My Work</a>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
   <h2>About Me</h2>
-  <p>I am a Virtual Assistant with experience in customer support, online selling, and social media management.</p>
+  <p style="color:#bbb; max-width:600px; margin-top:20px;">
+    I am a Virtual Assistant experienced in customer support, online selling,
+    social media management, and administrative tasks. I help businesses stay
+    organized and grow online.
+  </p>
 </section>
 
+<!-- SERVICES -->
 <section id="services">
   <h2>Services</h2>
-  <div class="services">
+
+  <div class="grid">
     <div class="card">Customer Support</div>
     <div class="card">Lead Generation</div>
-    <div class="card">Social Media Assistance</div>
-    <div class="card">Admin Tasks</div>
+    <div class="card">Social Media Management</div>
+    <div class="card">Admin Assistance</div>
   </div>
 </section>
 
-<section id="contact">
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <h2>Portfolio</h2>
+
+  <div class="grid">
+    <div class="card">Social Media Sample</div>
+    <div class="card">Customer Reply Template</div>
+    <div class="card">Canva Design</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
   <h2>Contact Me</h2>
   <p>Email: your@email.com</p>
   <p>Facebook: your profile</p>
 </section>
 
 <footer>
-  © 2026 Emalyn VA
+  © 2026 Emalyn VA Portfolio
 </footer>
+
+<!-- JAVASCRIPT (SCROLL ANIMATION) -->
+<script>
+const cards = document.querySelectorAll(".card");
+
+window.addEventListener("scroll", () => {
+  cards.forEach(card => {
+    const top = card.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (top < windowHeight - 100) {
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0)";
+      card.style.transition = "0.6s ease";
+    }
+  });
+});
+</script>
 
 </body>
 </html>
